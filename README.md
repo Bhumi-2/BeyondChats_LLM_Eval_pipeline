@@ -105,6 +105,31 @@ cost - Downloadable JSON report
 
 ------------------------------------------------------------------------
 
+## Why This Design?
+
+This evaluation pipeline is intentionally built using lightweight, heuristic-based metrics instead of LLM-based judges or embedding APIs.
+
+Key design considerations:
+
+Real-time performance:
+LLM-as-a-judge approaches introduce high latency (hundreds of milliseconds to seconds per evaluation). This solution uses only local text processing, enabling millisecond-level evaluations suitable for real-time systems.
+
+Cost efficiency at scale:
+External API-based evaluation (LLM judges, embedding services) incurs significant costs when applied to millions of daily conversations. This pipeline performs all evaluations locally, ensuring near-zero marginal cost per evaluation.
+
+Deterministic and explainable scoring:
+Heuristic metrics such as lexical overlap, sentence-level support, and numeric validation provide transparent, interpretable results. This avoids the non-determinism and opacity often associated with LLM-based judges.
+
+Production extensibility:
+The architecture is modular by design. Individual metrics (e.g., relevance or factual support) can be replaced with embedding-based similarity or LLM judges in the future without changing the overall pipeline.
+
+Operational simplicity:
+The solution requires no GPU, no external services, and no network calls, making it easy to deploy, scale horizontally, and integrate into existing AI systems.
+
+This design prioritizes speed, cost control, and reliability, making it suitable for large-scale, real-time AI response evaluation while remaining extensible for more advanced evaluation methods in the future.
+
+------------------------------------------------------------------------
+
 ## Submission Notes
 
 -   Public app link enables interactive testing
