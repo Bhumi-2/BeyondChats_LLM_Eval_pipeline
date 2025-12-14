@@ -18,7 +18,7 @@ A **publicly accessible Streamlit app** is provided to demonstrate
 real-time evaluation with predefined and custom test cases.
 
 **Live App URL:**\
-`<PASTE YOUR STREAMLIT CLOUD / PUBLIC URL HERE>`
+`https://beyondchatsllmevalpipeline-34aqkqqzxtdiphpnrxn64m.streamlit.app`
 
 The app includes: - Auto-fill demo test cases (good answer, hallucinated
 answer, incomplete answer) - Adjustable thresholds - JSON report
